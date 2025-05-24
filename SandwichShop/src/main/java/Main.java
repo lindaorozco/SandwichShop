@@ -12,7 +12,7 @@ public class Main {
         //calling the order class
         Order order = new Order();
 
-        int userInput = Integer.parseInt(scanner.nextLine().trim();
+        int userInput = Integer.parseInt(scanner.nextLine().trim());
 
         boolean homeMenuRunning = true;
 

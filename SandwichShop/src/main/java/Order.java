@@ -2,21 +2,21 @@ import java.util.Scanner;
 
 public class Order {
 
+    Scanner scanner = new Scanner(System.in);
+
     boolean orderMenuRunning = true;
 
         public void orderMenu(){
 
-            Scanner scanner = new Scanner(System.in);
-
             System.out.println(""" 
             What would you like to add to your order?
-            1. Add Sandwich\s
+            1. Add Sandwich
             2. Add Drink
             3. Add Chips
             4. Checkout
             5. Cancel
           
-           \s""");
+           """);
 
             while (orderMenuRunning){
 
@@ -34,7 +34,7 @@ public class Order {
 
                       case 5 -> orderMenu();
 
-                      default:
+                      default ->
                           System.out.println("Invalid entry. Try again");
                   }
 
@@ -44,14 +44,20 @@ public class Order {
 
             }
 
-            void addSandwich(){
-                System.out.println("Would you like it toasted? (Y/N)");
+        }
+    public void addSandwich(){
+        System.out.println("Would you like it toasted? (Y/N)");
 
-                boolean userChoice = scanner.nextLine().trim().replaceAll("\\s+", "").equalsIgnoreCase("Yes");
+        boolean userChoice = scanner.nextLine().trim().replaceAll("\\s+", "").equalsIgnoreCase("Yes");
 
-            }
+    }
+    public void addDrink(){
+    }
 
-        }// +addSandwich(Sandwich)
+        public void addChips(){}
+    public void checkout(){}
+
+        // +addSandwich(Sandwich)
     //        +addDrink(Drink)
     //        +addChips(Chips)
     //        +cancelOrder()
