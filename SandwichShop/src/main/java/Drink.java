@@ -15,7 +15,7 @@ public class Drink {
             "Orange"
 
     );
-
+    public Drink (){}
     public Drink(String size, String flavor) {
         this.size = size;
         this.flavor = flavor;
@@ -64,7 +64,7 @@ public class Drink {
             if (drinkList.contains(userDrink)) {
                 return new Drink(userDrinkSize, userDrink);
             } else {
-                System.out.println("We don't have these drink flavor in our menu. Try again.");
+                System.out.println("We don't have this drink flavor in our menu. Try again.");
             }
         }
 

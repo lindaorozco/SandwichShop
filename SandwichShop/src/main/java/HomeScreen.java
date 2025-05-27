@@ -7,7 +7,9 @@ public class HomeScreen {
         while (running){
             System.out.println("\n*** Home Screen ***");
 
-            System.out.println("""
+            System.out.println(""" 
+            Welcome to DELI-cious Sandwich Shop!
+            
             1. New Order
             2. Exit""");
             try {
@@ -15,7 +17,8 @@ public class HomeScreen {
 
                 switch (userChoice) {
                     case 1:
-                        // Order order = new Order()
+                        Order order = new Order();
+                        order.orderMenu();
                         break;
                     case 2:
                         System.out.println("Thank you! Bye.");
@@ -27,5 +30,4 @@ public class HomeScreen {
             }
         }
     }
-
 }

@@ -60,7 +60,7 @@ public class Bread {
         System.out.println("What size of bread would you like?" );
         String userBreadSize = scanner.nextLine().trim();
         if (breadTypeList.contains(userBreadType)){
-            bread = new Bread(userBreadType,userBreadSize);
+           return new Bread(userBreadType,userBreadSize);
         }
         return bread;
     }

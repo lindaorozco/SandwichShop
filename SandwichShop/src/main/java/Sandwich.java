@@ -31,15 +31,15 @@ public class Sandwich {
     }
 
     public double getPrice(Bread bread) {
-        double sandwichCost = 0.0;
-        sandwichCost += bread.getPrice(bread.getSize());
+        double sandwichPrice = 0.0;
+        sandwichPrice += bread.getPrice(bread.getSize());
 
         if(toppings != null){
             for (Toppings topping : toppings){
-                sandwichCost += topping.getPrice();
+                sandwichPrice += topping.getPrice();
             }
         }
-        return sandwichCost;
+        return sandwichPrice;
     }
 
     public void setPrice(double price) {
@@ -97,7 +97,7 @@ public class Sandwich {
     public void createMeatTopping(Bread bread){
 
         while (true) {
-            System.out.println("What kind of meat would you like? (Type 'done' to go back)");
+            System.out.println("What kind of meat would you like? (type 'done' to go back)");
             MeatToppings.meatList.forEach(System.out :: println);
             String userMeat = scanner.nextLine().trim().toLowerCase();
 
@@ -119,7 +119,7 @@ public class Sandwich {
     public void createCheeseTopping(Bread bread){
 
         while (true) {
-            System.out.println("What kind of cheese would you like? (Type 'done' to go back)");
+            System.out.println("What kind of cheese would you like? (type 'done' to go back)");
             CheeseToppings.cheeseList.forEach(System.out :: println);
             String userCheese = scanner.nextLine().trim().toLowerCase();
 
@@ -130,7 +130,7 @@ public class Sandwich {
                 Toppings cheeseTopping = new CheeseToppings(userCheese,bread, extraCheese);
                 this.toppings.add(cheeseTopping);
                 System.out.printf("Added: %s\n", userCheese);
-            }else {
+            } else {
                 System.out.println("Sorry, we don't have this cheese topping. Try again.");
             }
         }
@@ -157,7 +157,7 @@ public class Sandwich {
     }
     public void addSauces(){
         while(true) {
-            System.out.println("Please select a Sauce (type 'DONE' to go back):");
+            System.out.println("Please select a Sauce (type 'done' to go back):");
             Sauces.saucesList.forEach(System.out::println);
 
             String userSauce = scanner.nextLine().trim().toLowerCase();
@@ -193,16 +193,15 @@ public class Sandwich {
         }
     }
     // fix this at the end
+
     @Override
     public String toString() {
-        return "Sandwich" + " | " +
-               "price=" + price +
-               ", isToasted=" + isToasted +
-               ", breadSize='" + breadSize + '\'' +
-               ", breadType='" + breadType + '\'' +
+        return "Sandwich{" +
+               "scanner=" + scanner +
+               ", toasted=" + toasted +
+               ", price=" + price +
                '}';
     }
-
 }
 
 
