@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Drink {
@@ -6,14 +7,22 @@ public class Drink {
 
     private String size;
     private String flavor;
+    private double price;
+    List<String> drinkList = List.of(
+            "Cola",
+            "Pepsi",
+            "Sprite",
+            "Orange"
 
+    );
 
-    public Drink(String size, String flavor, double price) {
+    public Drink(String size, String flavor) {
         this.size = size;
         this.flavor = flavor;
+        this.price = getPrice(size);
     }
 
-    public String getSize() {
+    public String getSize(String size) {
         return size;
     }
 
@@ -29,41 +38,35 @@ public class Drink {
         this.flavor = flavor;
     }
 
-
-    public String drinkFlavor(){
-        System.out.println("What drink would you like?");
-        System.out.println("(1.) Cola \n(2.) Lemonade \n(3.) Orange \n(4.) Sprite");
-        String userFlavor = scanner.nextLine();
-
-        switch (userFlavor){
-            case "1" -> {
-                return "Cola"; }
-            case "2" -> {
-                return "Lemonade";}
-            case "3" -> {
-                return "Orange";}
-            case "4" -> {
-                return "Sprite";}
-            default -> System.out.println("Invalid entry. Please try again");
+    public double getPrice(String size) {
+        if (size.equalsIgnoreCase("M")) {
+            return this.price = 2.50;
+        } else if (size.equalsIgnoreCase("L")) {
+            return this.price = 3.00;
+        } else {
+            return 2.00;
         }
-        return userFlavor;
     }
-    
-    public String drinkSize(){
-        System.out.println("What size would you like? ");
-        System.out.println("(1.) Small  \n(2.) Medium \n(3.) Large  " );
 
-        String userSize = scanner.nextLine();
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
-        switch (userSize){
-            case "1" -> {
-                return "Small";}
-            case "2" -> {
-                return "Medium";}
-            case "3" -> {
-                return "Large";}
-            default -> System.out.println("Invalid entry. Please try again");
+
+    public Drink createDrink() {
+        while (true) {
+            System.out.println("What drink would you like?");
+            drinkList.forEach(System.out::println);
+            String userDrink = scanner.next().trim().toLowerCase();
+            System.out.println("What size?: S, M, L");
+            String userDrinkSize = scanner.nextLine().trim().toUpperCase();
+
+            if (drinkList.contains(userDrink)) {
+                return new Drink(userDrinkSize, userDrink);
+            } else {
+                System.out.println("We don't have these drink flavor in our menu. Try again.");
+            }
         }
-        return userSize;
+
     }
 }

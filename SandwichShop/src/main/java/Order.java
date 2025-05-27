@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Order {
@@ -7,6 +9,9 @@ public class Order {
     boolean orderMenuRunning = true;
 
         public void orderMenu(){
+            List<Sandwich> sandwichList = new ArrayList<>();
+            List<Drink> drinkList = new ArrayList<>();
+            List<Chips> chipsList = new ArrayList<>();
 
             System.out.println(""" 
             What would you like to add to your order?
@@ -24,7 +29,7 @@ public class Order {
                   int userChoice =Integer.parseInt(scanner.nextLine().trim());
 
                   switch (userChoice){
-                      case 1 -> addSandwich();
+                      case 1 -> addSandwich(); // for loop how many sandwiches // count variable (takes user input) // for iterations
 
                       case 2 -> addDrink();
 
@@ -32,7 +37,7 @@ public class Order {
 
                       case 4 -> checkout();
 
-                      case 5 -> orderMenu();
+                      case 0 -> orderMenuRunning = false;
 
                       default ->
                           System.out.println("Invalid entry. Try again");
@@ -45,25 +50,17 @@ public class Order {
             }
 
         }
-    public void addSandwich(){
-        System.out.println("Would you like it toasted? (Y/N)");
-
-        boolean userChoice = scanner.nextLine().trim().replaceAll("\\s+", "").equalsIgnoreCase("Yes");
-
+    public createOrder
+    public Sandwich addSandwich(){
+            return new Sandwich().createSandwich();
     }
     public void addDrink(){
+
     }
 
         public void addChips(){}
     public void checkout(){}
 
-        // +addSandwich(Sandwich)
-    //        +addDrink(Drink)
-    //        +addChips(Chips)
-    //        +cancelOrder()
-    //        +checkout()
-    //        +getTotalPrice()
-    //        +getOrderSummary()
 
 
 }
