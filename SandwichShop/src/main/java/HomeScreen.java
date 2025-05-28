@@ -5,7 +5,7 @@ public class HomeScreen {
     public void display() {
         boolean running = true;
         while (running){
-            System.out.println("\n*** Home Screen ***");
+            System.out.println("\n*** Home Screen ***\n");
 
             System.out.println(""" 
             Welcome to DELI-cious Sandwich Shop!

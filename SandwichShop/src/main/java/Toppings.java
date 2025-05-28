@@ -33,4 +33,17 @@ public abstract class Toppings {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        if(this instanceof RegularToppings){
+            return name;
+        }
+        if (extra) {
+            return String.format("%s (extra) - $%.2f", name, price);
+        } else {
+            return String.format("%s - $%.2f", name, price);
+        }
+    }
+
 }

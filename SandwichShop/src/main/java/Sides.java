@@ -2,13 +2,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Sides {
-
-    Scanner scanner = new Scanner(System.in);
     private String name;
 
     public static List<String>sidesList = List.of(
             "Au jus",
-            "sauce"
+            "Sauce"
     );
 
     public Sides(String name) {
@@ -21,5 +19,10 @@ public class Sides {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

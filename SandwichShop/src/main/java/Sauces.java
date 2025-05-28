@@ -1,17 +1,14 @@
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
 public class Sauces {
-
-    Scanner scanner = new Scanner(System.in);
     private String name;
     public static List<String> saucesList = List.of(
-            "mayo",
-            "mustard",
-            "ketchup",
-            "ranch",
-            "thousand island",
-            "vinaigrette");
+            "Mayo",
+            "Mustard",
+            "Ketchup",
+            "Ranch",
+            "Thousand island",
+            "Vinaigrette");
 
     public Sauces(String name) {
         this.name = name;
@@ -25,5 +22,9 @@ public class Sauces {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }
 

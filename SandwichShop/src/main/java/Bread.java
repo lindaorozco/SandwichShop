@@ -5,11 +5,10 @@ public class Bread {
 
     Scanner scanner = new Scanner(System.in);
 
-
     private String type;
     private String size;
     private double price;
-    private List<String> breadTypeList = List.of(
+    public static List<String> breadTypeList = List.of(
             "Wheat",
             "White",
             "Rye",
@@ -51,17 +50,5 @@ public class Bread {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-    public Bread createBread (){
-        Bread bread = null;
-        System.out.println("What kinda of bread would you like?");
-        breadTypeList.forEach(System.out :: println);
-        String userBreadType = scanner.nextLine().trim().toLowerCase();
-        System.out.println("What size of bread would you like?" );
-        String userBreadSize = scanner.nextLine().trim();
-        if (breadTypeList.contains(userBreadType)){
-           return new Bread(userBreadType,userBreadSize);
-        }
-        return bread;
     }
 }

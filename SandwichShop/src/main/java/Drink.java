@@ -19,10 +19,10 @@ public class Drink {
     public Drink(String size, String flavor) {
         this.size = size;
         this.flavor = flavor;
-        this.price = getPrice(size);
+        this.price = getPrice();
     }
 
-    public String getSize(String size) {
+    public String getSize() {
         return size;
     }
 
@@ -38,7 +38,7 @@ public class Drink {
         this.flavor = flavor;
     }
 
-    public double getPrice(String size) {
+    public double getPrice() {
         if (size.equalsIgnoreCase("M")) {
             return this.price = 2.50;
         } else if (size.equalsIgnoreCase("L")) {
@@ -57,7 +57,7 @@ public class Drink {
         while (true) {
             System.out.println("What drink would you like?");
             drinkList.forEach(System.out::println);
-            String userDrink = scanner.next().trim().toLowerCase();
+            String userDrink = scanner.next().trim();
             System.out.println("What size?: S, M, L");
             String userDrinkSize = scanner.nextLine().trim().toUpperCase();
 
@@ -67,6 +67,5 @@ public class Drink {
                 System.out.println("We don't have this drink flavor in our menu. Try again.");
             }
         }
-
     }
 }

@@ -2,7 +2,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CheeseToppings extends Toppings {
-    Scanner scanner = new Scanner(System.in);
 
     public static List<String> cheeseList = List.of(
             "American",
@@ -15,20 +14,6 @@ public class CheeseToppings extends Toppings {
         super(name, extra, getPrice(bread, extra));
 
     }
-    public CheeseToppings createTopping(Bread bread){
-        CheeseToppings cheeseTopping = null;
-        System.out.println("What kind of cheese would you like? ");
-        cheeseList.forEach(System.out :: println);
-        String userCheese = scanner.nextLine().trim().toLowerCase();
-        System.out.println("Would you like extra cheese for an additional price? (Y/N)");
-        boolean extraCheese = scanner.nextLine().trim().equalsIgnoreCase("Y");
-
-        if (cheeseList.contains(userCheese)){
-            cheeseTopping = new CheeseToppings(userCheese,bread, extraCheese);
-        }
-        return cheeseTopping;
-
-   }
    private static double getPrice(Bread bread, boolean isExtra){
        return switch (bread.getSize()){
            case "4" -> isExtra ? 1.05 : 0.75;
@@ -37,5 +22,4 @@ public class CheeseToppings extends Toppings {
            default -> 0.75;
        };
    }
-
 }

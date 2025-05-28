@@ -11,6 +11,7 @@ public class Chips {
            "Doritos",
            "Lays"
    );
+   public Chips (){}
 
     public Chips(String name) {
         this.price = 1.50;
