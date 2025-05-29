@@ -11,7 +11,8 @@ public class Order {
     private List<Chips> chipsList = new ArrayList<>();
     private double totalPrice;
 
-    public Order(){}
+    public Order() {
+    }
 
     public Order(String name, List<Sandwich> sandwichList, List<Drink> drinkList, List<Chips> chipsList) {
         this.name = name;
@@ -60,115 +61,135 @@ public class Order {
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
-        public void orderMenu(){
 
+    public void orderMenu() {
+
+
+        boolean orderMenuRunning = true;
+
+        while (orderMenuRunning) {
             System.out.println(""" 
-            What would you like to add to your order?
-            1. Add Sandwich
-            2. Add Drink
-            3. Add Chips
-            4. Checkout
-            0. Cancel
-           """);
-            boolean orderMenuRunning = true;
+                     What would you like to add to your order?
+                     1. Add Sandwich
+                     2. Add Drink
+                     3. Add Chips
+                     4. Checkout
+                     0. Cancel
+                    """);
+            try {
+                int userChoice = Integer.parseInt(scanner.nextLine().trim());
 
-            while (orderMenuRunning){
-                try {
-                  int userChoice =Integer.parseInt(scanner.nextLine().trim());
+                switch (userChoice) {
+                    case 1 -> addSandwich();
 
-                  switch (userChoice){
-                      case 1 -> addSandwich();
+                    case 2 -> addDrink();
 
-                      case 2 -> addDrink();
+                    case 3 -> addChips();
 
-                      case 3 -> addChips();
+                    case 4 -> {
+                        ReceiptFileManager.writeToFile(checkout());
+                        System.out.println("Thank you for your Order");
+                        orderMenuRunning = false;
+                    }
 
-                      case 4 -> checkout();
-
-                      case 0 -> {
-                          System.out.println("Order cancelled. Returning back to Home Screen...");
-                              orderMenuRunning = false;
-                      }
-                      default -> System.out.println("Invalid entry. Please try again");
-                  }
-
-                } catch (NumberFormatException e) {
-                    System.out.println(e.getMessage());
+                    case 0 -> {
+                        System.out.println("Order cancelled. Returning back to Home Screen...");
+                        orderMenuRunning = false;
+                    }
+                    default -> System.out.println("Invalid entry. Please try again");
                 }
+
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
             }
         }
-    public void addSandwich (){
+    }
+
+    public void addSandwich() {
         System.out.println("How many sandwiches would you like to add?");
 
         try {
             int sandwichCount = Integer.parseInt(scanner.nextLine().trim());
             for (int i = 0; i < sandwichCount; i++) {
-                System.out.println("=== Creating sandwich order # " + (i + 1)+ " ===");
+                System.out.println("=== Creating sandwich order # " + (i + 1) + " ===");
 
                 Sandwich sandwich = new Sandwich().createSandwich();
                 sandwichList.add(sandwich);
 
-                System.out.println("Sandwich # "+ (i + 1) + " has been added to your order");
+                System.out.println("Sandwich # " + (i + 1) + " has been added to your order");
             }
         } catch (NumberFormatException e) {
-                System.out.println("Invalid number. Please enter a valid number");
-            }
+            System.out.println("Invalid number. Please enter a valid number");
+        }
     }
-    public void addDrink(){
+
+    public void addDrink() {
         System.out.println("How many drinks would you like to add to your order?");
+        int userCount = Integer.parseInt(scanner.nextLine().trim());
 
-        try{
-            int drinkCount = Integer.parseInt(scanner.nextLine().trim());
-            for (int i = 0; i < drinkCount; i++){
+        for (int i = 1; i <= userCount; i++) {
 
-                Drink drink = new Drink().createDrink();
-                drinkList.add(drink);
+            System.out.println("What drink would you like?");
+            Drink.drinkList.forEach(System.out::println);
 
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid entry. Please try again");
+            String userDrink = scanner.nextLine().trim();
+            System.out.println("What size?: S, M, L");
+
+            String userDrinkSize = scanner.nextLine().trim().toUpperCase();
+            Drink drink = new Drink(userDrinkSize, userDrink);
+
+            drinkList.add(drink);
+            System.out.println("Your drink has been added to your order!");
         }
     }
 
-    public void addChips(){
+    public void addChips() {
+
         System.out.println("How many chips would you like to add to your order?");
+        String chipCount = scanner.nextLine().trim();
 
-        try{
-            int chipCount = Integer.parseInt(scanner.nextLine().trim());
-            for (int i = 0; i < chipCount; i ++){
-                System.out.println("Chips have been added to your order! " + (i + 1));
+        int chipInput = Integer.parseInt(chipCount);
+        for (int i = 0; i < chipInput; i++) {
 
-                Chips chips = new Chips().createChips();
-                chipsList.add(chips);
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid entry. Please try again");
+            System.out.println("Available chips:");
+            Chips.chipsList.forEach(System.out::println);
+            String userChips = scanner.nextLine().trim().toLowerCase();
+
+            Chips chips = new Chips(userChips);
+            chipsList.add(chips);
+            System.out.println("Chips have been added to your order");
         }
+
     }
-    public double getPrice(){
+
+
+    public double getPrice() {
         double totalCost = 0.0;
 
-        if(sandwichList != null){
-            for(Sandwich sandwich : sandwichList){
+        if (sandwichList != null) {
+            for (Sandwich sandwich : sandwichList) {
                 totalCost += sandwich.getPrice();
             }
         }
-        if (drinkList != null){
-            for(Drink drink : drinkList){
+        if (drinkList != null) {
+            for (Drink drink : drinkList) {
                 totalCost += drink.getPrice();
             }
         }
-        if (chipsList != null){
-            for(Chips chips: chipsList){
+        if (chipsList != null) {
+            for (Chips chips : chipsList) {
                 totalCost += chips.getPrice();
             }
         }
         return totalCost;
     }
-    public Order checkout (){
+
+    public Order checkout() {
         System.out.println("Please enter the name for the order:");
         String userOrderName = scanner.nextLine().trim();
         Order order = new Order(userOrderName, sandwichList, drinkList, chipsList);
+
+        System.out.println(order);
 
         System.out.println("Please verify order is correct");
         boolean userConfirmation = scanner.nextLine().trim().equalsIgnoreCase("Y");
@@ -187,10 +208,10 @@ public class Order {
         sb.append("=== ORDER SUMMARY ===\n");
         sb.append("Name: ").append(name).append("\n");
 
-        sb.append(" Sandwiches:\n");
+        sb.append(" Sandwiches:");
         if (sandwichList != null && !sandwichList.isEmpty()) {
             for (Sandwich sandwich : sandwichList) {
-                sb.append(" - ").append(sandwich).append("\n");
+                sb.append(sandwich).append("\n");
             }
         } else {
             sb.append(" - None\n");
@@ -219,7 +240,4 @@ public class Order {
 
         return sb.toString();
     }
-
-
-
 }

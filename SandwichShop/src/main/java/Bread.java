@@ -3,8 +3,6 @@ import java.util.Scanner;
 
 public class Bread {
 
-    Scanner scanner = new Scanner(System.in);
-
     private String type;
     private String size;
     private double price;

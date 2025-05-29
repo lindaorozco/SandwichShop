@@ -221,7 +221,7 @@ public class Sandwich {
     @Override
     public String toString() {
         return
-               "\nBread: " + bread.getType() + " (" + bread.getSize() + " inch)" +
+               "\nBread: " + bread.getType() + " (" + bread.getSize() + " inch)" + String.format("- $%.2f", bread.getPrice(bread.getSize()))+
                "\nToasted: " + toasted +
                "\nToppings: " + (toppings.isEmpty() ? "None" : toppings) +
                "\nSauces: " + (sauces.isEmpty() ? "None" : sauces) +

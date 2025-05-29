@@ -8,14 +8,14 @@ public class Drink {
     private String size;
     private String flavor;
     private double price;
-    List<String> drinkList = List.of(
+    public static List<String> drinkList = List.of(
             "Cola",
             "Pepsi",
             "Sprite",
             "Orange"
 
     );
-    public Drink (){}
+
     public Drink(String size, String flavor) {
         this.size = size;
         this.flavor = flavor;
@@ -40,9 +40,9 @@ public class Drink {
 
     public double getPrice() {
         if (size.equalsIgnoreCase("M")) {
-            return this.price = 2.50;
+            return 2.50;
         } else if (size.equalsIgnoreCase("L")) {
-            return this.price = 3.00;
+            return 3.00;
         } else {
             return 2.00;
         }
@@ -52,20 +52,8 @@ public class Drink {
         this.price = price;
     }
 
-
-    public Drink createDrink() {
-        while (true) {
-            System.out.println("What drink would you like?");
-            drinkList.forEach(System.out::println);
-            String userDrink = scanner.next().trim();
-            System.out.println("What size?: S, M, L");
-            String userDrinkSize = scanner.nextLine().trim().toUpperCase();
-
-            if (drinkList.contains(userDrink)) {
-                return new Drink(userDrinkSize, userDrink);
-            } else {
-                System.out.println("We don't have this drink flavor in our menu. Try again.");
-            }
-        }
+    @Override
+    public String toString() {
+        return String.format("%s (%s) - $%.2f", flavor,size,getPrice());
     }
 }

@@ -1,0 +1,19 @@
+=== ORDER SUMMARY ===
+Name: Stan
+ Sandwiches:
+Bread: Rye (4 inch)- $5.50
+Toasted: true
+Toppings: [Ham (extra) - $1.50, Bacon (extra) - $1.50, Swiss (extra) - $1.05, Mushrooms]
+Sauces: [Mayo]
+Sides: [Sauce]
+Total Price: $9.55
+
+Drinks:
+ - Cola (L) - $3.00
+ - Orange (L) - $3.00
+
+Chips:
+ - lays - $1.50
+
+Total Price: $17.05
+======================
