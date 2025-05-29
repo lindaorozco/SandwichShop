@@ -1,9 +1,7 @@
 import java.util.List;
-import java.util.Scanner;
 
 public class Chips {
 
-   private static Scanner scanner = new Scanner(System.in);
    private double price;
    private String name;
    public static List<String> chipsList = List.of(
@@ -33,4 +31,5 @@ public class Chips {
     public String toString() {
         return String.format("%s - $%.2f", name,price);
     }
+
 }

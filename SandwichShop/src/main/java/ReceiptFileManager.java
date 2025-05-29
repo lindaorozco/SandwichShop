@@ -16,5 +16,4 @@ public class ReceiptFileManager {
             System.out.println(e.getMessage());
         }
     }
-
 }

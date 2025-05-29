@@ -45,5 +45,4 @@ public abstract class Toppings {
             return String.format("%s - $%.2f", name, price);
         }
     }
-
 }

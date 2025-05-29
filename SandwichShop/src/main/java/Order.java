@@ -86,11 +86,7 @@ public class Order {
 
                     case 3 -> addChips();
 
-                    case 4 -> {
-                        ReceiptFileManager.writeToFile(checkout());
-                        System.out.println("Thank you for your Order");
-                        orderMenuRunning = false;
-                    }
+                    case 4 -> checkout();
 
                     case 0 -> {
                         System.out.println("Order cancelled. Returning back to Home Screen...");
@@ -111,12 +107,12 @@ public class Order {
         try {
             int sandwichCount = Integer.parseInt(scanner.nextLine().trim());
             for (int i = 0; i < sandwichCount; i++) {
-                System.out.println("=== Creating sandwich order # " + (i + 1) + " ===");
+                System.out.println("\n=== Creating sandwich order # " + (i + 1) + " ===");
 
                 Sandwich sandwich = new Sandwich().createSandwich();
                 sandwichList.add(sandwich);
 
-                System.out.println("Sandwich # " + (i + 1) + " has been added to your order");
+                System.out.println("Sandwich # " + (i + 1) + " has been added to your order\n");
             }
         } catch (NumberFormatException e) {
             System.out.println("Invalid number. Please enter a valid number");
@@ -139,7 +135,7 @@ public class Order {
             Drink drink = new Drink(userDrinkSize, userDrink);
 
             drinkList.add(drink);
-            System.out.println("Your drink has been added to your order!");
+            System.out.println("Your drink has been added to your order!\n");
         }
     }
 
@@ -157,7 +153,7 @@ public class Order {
 
             Chips chips = new Chips(userChips);
             chipsList.add(chips);
-            System.out.println("Chips have been added to your order");
+            System.out.println("Chips have been added to your order\n");
         }
 
     }
@@ -184,21 +180,20 @@ public class Order {
         return totalCost;
     }
 
-    public Order checkout() {
+    public void checkout() {
         System.out.println("Please enter the name for the order:");
         String userOrderName = scanner.nextLine().trim();
         Order order = new Order(userOrderName, sandwichList, drinkList, chipsList);
 
         System.out.println(order);
 
-        System.out.println("Please verify order is correct");
+        System.out.println("Please verify order is correct (Y/N)");
         boolean userConfirmation = scanner.nextLine().trim().equalsIgnoreCase("Y");
         if (userConfirmation) {
             System.out.println("Your order has been confirmed!");
-            return order;
-        } else {
-            System.out.println("Your order will be cancelled or modified");
-            return null;
+            ReceiptFileManager.writeToFile(order);
+        }else {
+            System.out.println("Your order will be cancelled or modified\n");
         }
     }
 

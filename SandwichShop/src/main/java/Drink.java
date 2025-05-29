@@ -1,9 +1,6 @@
 import java.util.List;
-import java.util.Scanner;
 
 public class Drink {
-
-    Scanner scanner = new Scanner(System.in);
 
     private String size;
     private String flavor;

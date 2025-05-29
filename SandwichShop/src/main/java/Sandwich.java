@@ -216,7 +216,6 @@ public class Sandwich {
         }
         return sidesList;
     }
-    // fix this at the end
 
     @Override
     public String toString() {
