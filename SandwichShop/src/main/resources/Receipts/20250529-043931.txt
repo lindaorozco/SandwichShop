@@ -1,0 +1,18 @@
+=== ORDER SUMMARY ===
+Name: Linda
+ Sandwiches:
+Bread: Wheat (4 inch)- $5.50
+Toasted: true
+Toppings: [Swiss (extra) - $1.05]
+Sauces: [Mayo]
+Sides: None
+Total Price: $6.55
+
+Drinks:
+ - None
+
+Chips:
+ - lays - $1.50
+
+Total Price: $8.05
+======================
